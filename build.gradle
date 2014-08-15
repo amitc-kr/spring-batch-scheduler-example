@@ -1,0 +1,41 @@
+buildscript {
+  repositories {
+    maven { url "http://repo.spring.io/libs-release" }
+    mavenLocal()
+    mavenCentral()
+  }
+
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.5.RELEASE")
+  }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'application'
+apply plugin: 'spring-boot'
+
+mainClassName = 'com.sid.springbatch.Application'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "http://repo.spring.io/libs-release" }
+}
+
+dependencies {
+    compile 'org.springframework.batch:spring-batch-core:3.0.1.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-batch:1.1.5.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa:1.1.5.RELEASE'
+    compile 'mysql:mysql-connector-java:5.1.26'    
+}
+
+jar {
+    baseName = 'spring-batch-test2'
+    version =  '0.1.0'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+}
